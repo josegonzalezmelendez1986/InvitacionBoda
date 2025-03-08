@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Your Wedding</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Import Google Fonts - must be at the top of the file */
+        @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Apply box-sizing globally */
+        *, *::before, *::after {
+            box-sizing: border-box; /* Inherit box-sizing from body */
+        }
+
+        /* Section styling */
+        section {
+            padding: 2rem 1rem; /* Add padding for spacing */
+            max-width: 100%; /* Ensure no section exceeds 100% width */
+            width: 100%; /* Ensure sections take full width */
+        }
+
+        /* Header styling */
+        header {
+            background-image: url('/src/H1.JPG'); /* Ensure this path is correct */
+            background-size: cover; /* Cover the entire header */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repeating */
+            min-height: 150px; /* Minimum height for the header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* Ensure header takes full width */
+        }
+
+        /* Footer styling */
+        footer {
+            background-image: url('/src/H1.JPG'); /* Ensure this path is correct */
+            background-size: cover; /* Cover the entire footer */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repeating */
+            padding: 2rem 1rem;
+            text-align: center;
+            width: 100%; /* Ensure footer takes full width */
+        }
+
+        /* Ensure images don't overflow */
+        img {
+            max-width: 100%; /* Ensure images scale down to fit their container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Ensure buttons are large enough for touch */
+        button {
+            padding: 12px 20px; /* Ensure sufficient padding */
+            min-width: 44px; /* Minimum touch target size */
+            max-width: 100%; /* Ensure buttons do not exceed 100% width */
+        }
+
+        /* Countdown number styling */
+        .countdown-number {
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+            -webkit-background-clip: text; /* Vendor prefix for WebKit browsers */
+            background-clip: text; /* Standard property */
+            -webkit-text-fill-color: transparent; /* Vendor prefix for WebKit browsers */
+            /*text-fill-color: transparent; /* Standard property (not widely supported) */
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+
+            header, footer {
+                padding: 1rem; /* Reduce padding for smaller screens */
+            }
+
+            .countdown-number {
+                font-size: 2rem; /* Smaller font size for countdown */
+            }
+
+            .dress-code-grid {
+                display: flex;
+                flex-direction: column; /* Stack items vertically on small screens */
+            }
+
+            .dress-code-item {
+                margin-bottom: 1rem; /* Add spacing between items */
+            }
+
+            /* Adjust image sizes */
+            .image-couple, .image-venue, .dress-code-image {
+                width: 100%; /* Ensure images take full width */
+                height: auto; /* Maintain aspect ratio */
+            }
+        }
+
+        /* Additional styles for performance */
+        img {
+            display: block; /* Prevents bottom space in images */
+            max-width: 100%; /* Ensure images scale down to fit their container */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark">V&J</div>
+        <div class="watermark">V&J</div>
+        <div class="watermark">V&J</div>
+    </div>
+
+    <header>
+        <h1>Nos Casamos</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Y estaríamos muy felices de tener tu compañía en este momento tan especial para nuestra vida</h2>
+            <img src="./src/foto1.jpg" alt="Pareja de novios" class="image-couple">
+        </section>
+
+        <section>
+            <p>Únete a nosotros el <strong>Domingo 2 de Noviembre, 2025 a las 16:00h</strong></p>
+            <h3>Cuenta regresiva para el Gran Día</h3>
+            <div class="countdown" id="countdown"></div>
+        </section>
+
+        <section>
+            <h3>Ubicación</h3>
+            <p>El evento se llevará a cabo en: <strong>Villa del Lago</strong>, La Garita de Alajuela</p>
+            <img src="./src/venue.jpg" alt="Lugar del evento" class="image-venue">
+            <a href="https://maps.app.goo.gl/wwiM2uR74h3XrTK66" target="_blank" class="venue-link">Ver en Google Maps</a>
+        </section>
+
+        <section>
+            <h3>Código de Vestimenta</h3>
+            <div class="dress-code-grid">
+                <div class="dress-code-item">
+                    <p class="dress-code-text">Vestimenta Formal Hombres</p>
+                    <img src="./src/V1.jpg" alt="Vestimenta formal hombres" class="dress-code-image">
+                </div>
+                <div class="dress-code-item">
+                    <p class="dress-code-text">Vestimenta Formal Mujeres</p>
+                    <img src="./src/V2.jpg" alt="Vestimenta formal mujeres" class="dress-code-image">
+                </div>
+                <div class="dress-code-item">
+                    <p class="dress-code-text">Colores No Permitidos</p>
+                    <img src="./src/V3.jpg" alt="Colores no permitidos" class="dress-code-image">
+                </div>
+                <div class="dress-code-item">
+                    <p class="dress-code-text">Vestimenta NO Permitida</p>
+                    <img src="./src/V4.jpg" alt="Vestimenta NO permitida" class="dress-code-image">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Regalo de Bodas</h3>
+            <div class="gift-content">
+                <p class="gift-message">Tu presencia es nuestro mejor regalo, si estabas pensando en darnos otro obsequio, agradecemos alguna de las siguientes opciones:</p>
+                
+                <div class="gift-options">
+                    <div class="gift-option">
+                        <span class="gift-icon">💝</span>
+                        <h4>Sobre para dinero en Efectivo</h4>
+                        <p>Habrá un buzón disponible en la recepción</p>
+                    </div>
+                    
+                    <div class="gift-option">
+                        <span class="gift-icon">🏦</span>
+                        <h4>Transferencia Bancaria</h4>
+                        <div class="bank-details">
+                            <p>Banco: BAC San José</p>
+                            <p>IBAN: CR97010200009365346351</p>
+                            <p>Titular: Jose Gonzalez</p>
+                            <p>SINPE: 70178417</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Captura los mejores momentos</h3>
+            <p>Y compártelos con nosotros haciendo clic en el siguiente enlace</p>
+            <a href="https://onelifesocial.page.link/uSvs" target="_blank" class="share-button">Álbum Compartido</a>
+        </section>
+
+        <section>
+            <h3>Por favor confirma tu Asistencia</h3>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScxbnq0GGRL5ED3UoS7QUCJxTZDWMsjX8C_9EqyXcdTXYxP-Q/viewform?usp=header" target="_blank" class="rsvp-button">Confirmo</a>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-highlight">¡TE ESPERAMOS!</p>
+        <p>© 2025 Your Wedding</p>
+    </footer>
+
+    <script>
+        // Set the wedding date
+        var weddingDate = new Date("November 2, 2025 16:00:00").getTime();
+
+        // Update the countdown every second
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var timeLeft = weddingDate - now;
+
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Update the countdown display
+            document.getElementById("countdown").innerHTML = days + " días, " + hours + " horas, "
+            + minutes + " minutos, " + seconds + " segundos";
+
+            // Check if the countdown is finished
+            if (timeLeft < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "¡Es el día de la boda!";
+            }
+        }, 1000);
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
