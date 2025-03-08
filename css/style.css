@@ -105,7 +105,7 @@ body::before {
 
 /* Header styling */
 header {
-    background-image: url('../src/h1.jpg'); /* Set background image for header */
+    background-image: url('../src/H1.JPG'); /* Set background image for header */
     background-size: cover; /* Cover the entire header */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent repeating */
@@ -350,7 +350,7 @@ button:active::after {
 
 /* Footer styling */
 footer {
-    background-image: url('../src/h1.jpg'); /* Set background image for footer */
+    background-image: url('../src/H1.JPG'); /* Set background image for footer */
     background-size: cover; /* Cover the entire footer */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent repeating */
