@@ -46,14 +46,13 @@
 
 /* Ensure body takes full height and allows scrolling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); /* Fallback color only */
     color: var(--text-color);
     margin: 0;
     padding: 0;
     text-align: center;
     line-height: 1.6;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensure the body takes full height */
 }
 
 body::before {
@@ -106,22 +105,16 @@ body::before {
 
 /* Header styling */
 header {
-    position: relative;
-    padding: 2rem 1rem;
-    min-height: 150px;
+    background-image: url('../src/h1.jpg'); /* Set background image for header */
+    background-size: cover; /* Cover the entire header */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    min-height: 150px; /* Minimum height for the header */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
     width: 100%; /* Ensure header takes full width */
-    background-color: #b89c5e; /* Match the footer background color */
-}
-
-.header-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    margin-bottom: 0;
+    position: relative; /* Position relative for overlay */
 }
 
 header::before {
@@ -131,7 +124,8 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5); /* Adjust the color and opacity as needed */
+    z-index: 0; /* Place it behind the content */
 }
 
 header h1 {
@@ -140,8 +134,8 @@ header h1 {
     font-size: 7rem; /* Increase font size */
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.9); /* Original text shadow */
     margin: 0; /* Remove default margin */
-    position: relative; /* Ensure it can be layered */
-    z-index: 2; /* Bring it to the front */
+    position: relative; /* Ensure it can be layered above the overlay */
+    z-index: 1; /* Bring it to the front */
     font-weight: normal; /* Change font weight to normal */
 }
 
@@ -356,14 +350,16 @@ button:active::after {
 
 /* Footer styling */
 footer {
-    position: relative;
-    text-align: center;
+    background-image: url('../src/h1.jpg'); /* Set background image for footer */
+    background-size: cover; /* Cover the entire footer */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
     padding: 2rem 1rem;
-    background-color: #b89c5e; /* Elegant gold color */
+    text-align: center;
     width: 100%; /* Ensure footer takes full width */
+    position: relative; /* Position relative for overlay */
 }
 
-/* Add overlay for text readability */
 footer::before {
     content: '';
     position: absolute;
@@ -371,12 +367,13 @@ footer::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.5); /* Same as header overlay */
+    background: rgba(255, 255, 255, 0.5); /* Adjust the color and opacity as needed */
+    z-index: 0; /* Place it behind the content */
 }
 
 footer p {
-    position: relative;
-    z-index: 1; /* Place text above overlay */
+    position: relative; /* Ensure it can be layered above the overlay */
+    z-index: 1; /* Bring it to the front */
 }
 
 footer p:first-child {
