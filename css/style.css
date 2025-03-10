@@ -105,28 +105,24 @@ body::before {
 
 /* Header styling */
 header {
-    background-image: url('../src/H1.jpg'); /* Set background image for header */
-    background-size: cover; /* Cover the entire header */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating */
+    position: relative; /* Position relative for layering */
     min-height: 150px; /* Minimum height for the header */
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%; /* Ensure header takes full width */
-    position: relative; /* Position relative for layering */
-    z-index: 1; /* Ensure header is above other content */
 }
 
-header::before {
-    content: '';
-    position: absolute;
+.header-background {
+    position: absolute; /* Position the image absolutely */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.5); /* Adjust the color and opacity as needed */
-    z-index: 0; /* Place it behind the content */
+    width: 100%; /* Cover the entire header */
+    height: 100%; /* Cover the entire header */
+    object-fit: cover; /* Ensure the image covers the area */
+    z-index: 0; /* Send the image behind the text */
 }
 
 header h1 {
@@ -351,31 +347,27 @@ button:active::after {
 
 /* Footer styling */
 footer {
-    background-image: url('../src/H1.jpg'); /* Set background image for footer */
-    background-size: cover; /* Cover the entire footer */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating */
+    position: relative; /* Position relative for layering */
     padding: 2rem 1rem;
     text-align: center;
     width: 100%; /* Ensure footer takes full width */
-    position: relative; /* Position relative for layering */
-    z-index: 1; /* Ensure footer is above other content */
 }
 
-footer::before {
-    content: '';
-    position: absolute;
+.footer-background {
+    position: absolute; /* Position the image absolutely */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.5); /* Adjust the color and opacity as needed */
-    z-index: 0; /* Place it behind the content */
+    width: 100%; /* Cover the entire footer */
+    height: 100%; /* Cover the entire footer */
+    object-fit: cover; /* Ensure the image covers the area */
+    z-index: 0; /* Send the image behind the text */
 }
 
 footer p {
     position: relative; /* Ensure it can be layered above the overlay */
-    z-index: 2; /* Bring it to the front */
+    z-index: 1; /* Bring it to the front */
 }
 
 footer p:first-child {
