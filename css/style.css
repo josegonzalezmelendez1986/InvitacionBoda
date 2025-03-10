@@ -46,7 +46,7 @@
 
 /* Ensure body takes full height and allows scrolling */
 body {
-    background-color: var(--bg-color); /* Fallback color only */
+    background-color: var(--bg-color); /* Fallback color only for body */
     color: var(--text-color);
     margin: 0;
     padding: 0;
