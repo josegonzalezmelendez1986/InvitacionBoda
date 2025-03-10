@@ -114,7 +114,8 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%; /* Ensure header takes full width */
-    position: relative; /* Position relative for overlay */
+    position: relative; /* Position relative for layering */
+    z-index: 1; /* Ensure header is above other content */
 }
 
 header::before {
@@ -135,7 +136,7 @@ header h1 {
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.9); /* Original text shadow */
     margin: 0; /* Remove default margin */
     position: relative; /* Ensure it can be layered above the overlay */
-    z-index: 1; /* Bring it to the front */
+    z-index: 2; /* Bring it to the front */
     font-weight: normal; /* Change font weight to normal */
 }
 
@@ -357,7 +358,8 @@ footer {
     padding: 2rem 1rem;
     text-align: center;
     width: 100%; /* Ensure footer takes full width */
-    position: relative; /* Position relative for overlay */
+    position: relative; /* Position relative for layering */
+    z-index: 1; /* Ensure footer is above other content */
 }
 
 footer::before {
@@ -373,7 +375,7 @@ footer::before {
 
 footer p {
     position: relative; /* Ensure it can be layered above the overlay */
-    z-index: 1; /* Bring it to the front */
+    z-index: 2; /* Bring it to the front */
 }
 
 footer p:first-child {
