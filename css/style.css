@@ -111,6 +111,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%; /* Ensure header takes full width */
+    overflow: hidden; /* Hide any overflow */
 }
 
 .header-background {
@@ -351,6 +352,7 @@ footer {
     padding: 2rem 1rem;
     text-align: center;
     width: 100%; /* Ensure footer takes full width */
+    overflow: hidden; /* Hide any overflow */
 }
 
 .footer-background {
@@ -366,8 +368,8 @@ footer {
 }
 
 footer p {
-    position: relative; /* Ensure it can be layered above the overlay */
-    z-index: 1; /* Bring it to the front */
+    position: relative; /* Ensure text is above the background */
+    z-index: 1; /* Bring text to the front */
 }
 
 footer p:first-child {
