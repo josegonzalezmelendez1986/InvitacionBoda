@@ -54,6 +54,10 @@ body {
     line-height: 1.6;
     min-height: 100vh; /* Ensure the body takes full height */
     scroll-behavior: smooth; /* Enable smooth scrolling */
+    overflow-x: hidden !important;
+    width: 100vw;
+    max-width: 100vw;
+    overscroll-behavior-y: contain;
 }
 
 body::before {
@@ -125,6 +129,10 @@ header {
     height: 100%; /* Cover the entire header */
     object-fit: cover; /* Ensure the image covers the area */
     z-index: 0; /* Send the image behind the text */
+    max-width: 100vw;
+    max-height: 100%;
+    pointer-events: none;
+    user-select: none;
 }
 
 header h1 {
@@ -153,6 +161,8 @@ header h1 {
     margin: 0 auto;
     padding: 0 20px;
     background: transparent;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .container:hover {
@@ -366,6 +376,10 @@ footer {
     height: 100%; /* Cover the entire footer */
     object-fit: cover; /* Ensure the image covers the area */
     z-index: 0; /* Send the image behind the text */
+    max-width: 100vw;
+    max-height: 100%;
+    pointer-events: none;
+    user-select: none;
 }
 
 footer p {
@@ -454,13 +468,13 @@ html {
 
 /* Enhanced Section Styling */
 section {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
     position: relative;
-    overflow: hidden;
-    margin: 40px 0;
-    padding: 2rem 1rem;
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden; /* Prevent overflow issues */
+    z-index: 0;
+    overflow: visible !important;
 }
 
 /* Background layer (bottom) */
@@ -475,26 +489,8 @@ section::before {
 }
 
 /* Watermark layer (middle) */
-section::after,
-section:nth-child(even)::after,
-section:nth-child(2)::after { /* Specifically target countdown section */
-    content: 'V&J';
-    position: absolute;
-    font-family: 'Pinyon Script', cursive;
-    font-size: 15rem;
-    color: rgba(0, 0, 0, 0.03);
-    z-index: 2;
-    pointer-events: none;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg) !important; /* Force consistent rotation */
-    animation: sectionFloat 20s ease-in-out infinite !important; /* Force consistent animation */
+section::after {
+    display: none !important;
 }
 
 /* Content layer (top) */
@@ -1226,7 +1222,7 @@ section h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -2 !important;
     pointer-events: none;
     overflow: hidden;
 }
@@ -1236,6 +1232,8 @@ section h2 {
     font-family: 'Pinyon Script', cursive;
     color: rgba(0, 0, 0, 0.03);
     white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
 }
 
 .watermark:nth-child(1) {
@@ -1262,7 +1260,7 @@ section h2 {
 /* Section watermark styling */
 section {
     position: relative;
-    overflow: hidden; /* Contain the watermark */
+    overflow: visible !important;
 }
 
 section::before {
@@ -1443,7 +1441,7 @@ footer p:last-child {
 html, body {
     height: auto; /* Allow the body to grow with content */
     min-height: 100%; /* Ensure minimum height is 100% for scrolling */
-    overflow-x: hidden; /* Prevent horizontal overflow */
+    overflow-x: hidden !important;
     overflow-y: auto; /* Allow vertical scrolling */
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
@@ -1482,7 +1480,7 @@ header, footer {
 
 /* Disable all touch actions on sections */
 section {
-    overflow: hidden; /* Prevent scrolling within sections */
+    overflow: visible !important;
     height: auto; /* Allow sections to grow with content */
 }
 
@@ -1502,4 +1500,98 @@ img {
     font-size: 2.5rem; /* Adjust font size as needed */
     font-weight: 600; /* Match the font weight */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow effect for better visibility */
+}
+
+/* --- PATCH: Fix mobile scrolling/flash without removing design --- */
+
+/* 1. Prevent horizontal scroll and layout jumps */
+html, body {
+    overflow-x: hidden !important;
+    width: 100vw;
+    max-width: 100vw;
+}
+
+/* 2. Remove negative margins and extra overflows from sections */
+section {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+    overflow: visible !important; /* Only hide overflow if you have a specific reason */
+    position: relative;
+    z-index: 0;
+}
+
+/* 3. Only use section::before for watermarks, not ::after (avoid double stacking) */
+section::after {
+    display: none !important;
+}
+
+/* 4. Ensure .container does not overflow or cause scroll jumps */
+.container {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* 5. Make sure .watermark-container is always behind and not causing scroll */
+.watermark-container {
+    z-index: -2 !important;
+    pointer-events: none;
+}
+
+/* 6. Fix for iOS Safari "bounce" scroll: prevent accidental scroll chaining */
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* 7. Ensure header/footer backgrounds do not overflow */
+.header-background,
+.footer-background {
+    max-width: 100vw;
+    max-height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* 8. Prevent accidental scroll on fixed/absolute watermarks */
+.watermark {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* 9. Remove any accidental scrollbars on mobile */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- PATCH: Prevent section jump/overlap on mobile --- */
+
+/* 1. Remove negative margins and set reasonable padding for sections */
+section {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    position: relative;
+    z-index: 0;
+    overflow: visible !important;
+}
+
+/* 2. Make sure watermarks never block scrolling or content */
+.watermark,
+.watermark-container,
+section::before {
+    pointer-events: none !important;
+    user-select: none !important;
+    z-index: -1 !important;
+}
+
+/* 3. Prevent accidental scroll chaining on mobile */
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* 4. Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
 }
