@@ -147,6 +147,11 @@
             max-width: 100%; /* Ensure images scale down to fit their container */
             height: auto; /* Maintain aspect ratio */
         }
+
+        /* Hide sections with the 'hidden' class */
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -234,7 +239,7 @@
             <a href="https://onelifesocial.page.link/uSvs" target="_blank" class="share-button">Álbum Compartido</a>
         </section>
 
-        <section>
+        <section class="hidden">
             <h3>Por favor confirma tu asistencia antes del 15 de Setiembre, de lo contrario, tu espacio no será reservado</h3>
             <p>Válida únicamente para 1 persona. Esta invitación es personal y no transferible.</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScxbnq0GGRL5ED3UoS7QUCJxTZDWMsjX8C_9EqyXcdTXYxP-Q/viewform?usp=header" target="_blank" class="rsvp-button">Confirmo</a>
